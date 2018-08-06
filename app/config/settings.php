@@ -6,10 +6,14 @@ return [
     'display_errors' => true,
     'ajax_interceptor' => [
         'is_dev_mode' => true,
-        'json_mapper' => [
-            '/exemplo' => 'exemplo.json',
-            '/teste1' => 'teste1.json',
-            '/teste2' => 'teste2.json'
-        ]
-    ]
+        'json_mapper' => require 'app/config/json-mapper.php'
+    ],
+    'jwt' => [
+        'app_secret' => getenv('APP_SECRET'),
+        'token_expires' => 1800 // 30 min
+    ],
+    'session' => [
+        'cookie_name' => getenv('APP_COOKIE_NAME'),
+        'cookie_expires' => 1800 // 30 min
+    ],
 ];

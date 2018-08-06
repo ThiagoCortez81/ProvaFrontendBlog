@@ -1,13 +1,5 @@
 version: '3.1'
 services:
-    composer:
-        image: composer:1.6.5
-        container_name: phpstart-composer
-        volumes:
-            - .:/srv/vhosts/phpApp
-        working_dir: /srv/vhosts/phpApp
-        command: install --ignore-platform-reqs
-
     node:
         image: node:10.6.0-alpine
         container_name: phpstart-node
@@ -21,18 +13,19 @@ services:
             - 3000:3000
             - 3001:3001
         depends_on:
-            - composer
             - webserver
 
     php-fpm:
         image: marciodojr/phpstart:2.0.0
         container_name: phpstart
         environment:
+            - APP_SECRET=holly_molly!
             - APP_COOKIE_NAME=auth_token
         working_dir: /srv/vhosts/phpApp
         volumes:
             - .:/srv/vhosts/phpApp
-            - ./.docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+            - ./.docker/php/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+        command: /bin/sh -c "composer install && php-fpm"
 
     webserver:
         image: nginx:1.14.0-alpine

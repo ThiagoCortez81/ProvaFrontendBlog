@@ -2,30 +2,33 @@
 
 namespace IntecPhp\View;
 
+use Exception;
+use IntecPhp\Service\Config;
 
-use IntecPhp\Model\Config;
-
-/**
- * Description of Layout
- *
- * @author intec
- */
 class Layout
 {
 
     private $stylesheets;
     private $scripts;
+
+    private $title;
+
+    private $metaDescription;
+    private $metaKeywords;
+
     private $layout;
     private $renderLayout = true;
-    private $title;
+    private $appendPartial = [];
 
     const DEFAULT_LAYOUT = 'layout';
 
-    public function __construct($layoutName = self::DEFAULT_LAYOUT, $stylesheets = [], $scripts = [])
+    public function __construct($layoutName = self::DEFAULT_LAYOUT)
     {
-        $this->stylesheets = $stylesheets;
-        $this->scripts = $scripts;
         $this->layout = $layoutName;
+        $this->stylesheets = [];
+        $this->scripts = [];
+        $this->baseUrl = Config::getDomain();
+        $this->logoUrl = $this->domain = '/img/logo.png';
     }
 
     public function setLayout($layout)
@@ -43,14 +46,28 @@ class Layout
     public function setTitle($title)
     {
         $this->title = $title;
+        return $this;
     }
 
-    public function appendTitle($text, $separator = ' ')
+    public function appendTitle($text, $separator = ' - ')
     {
         $this->title .= $separator . $text;
+        return $this;
     }
 
-    public function render($page, $resp = [])
+    public function setMetaKeywords($keywords)
+    {
+        $this->metaKeywords = $keywords;
+        return $this;
+    }
+
+    public function setMetaDescription($description)
+    {
+        $this->metaDescription = $description;
+        return $this;
+    }
+
+    public function render($page, array $resp = [])
     {
         $this->contentId = $page;
         extract($resp);
@@ -61,15 +78,25 @@ class Layout
         }
     }
 
-    public function addScript($path)
+    public function addScript($src)
     {
-        $this->scripts[] = $path;
+        $this->scripts[] = $src . '.min.js';
         return $this;
     }
 
     public function addStylesheet($href)
     {
-        $this->stylesheets[] = $href;
+        $this->stylesheets[] = $href . '.min.css';
+        return $this;
+    }
+
+    public function appendPartial($partial)
+    {
+        if(file_exists('app/views/partial/'. $partial .'.php')) {
+            $this->appendPartial[] = $partial;
+        } else {
+            throw new Exception('Partial \'' . $partial . '\' não encontrado');
+        }
         return $this;
     }
 }

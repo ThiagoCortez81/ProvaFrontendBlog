@@ -32,6 +32,7 @@ SimpleRouter::setDefaultMiddlewares([
 SimpleRouter::setRoutes(require 'app/config/routes.php');
 
 SimpleRouter::setNotFoundFallback(HttpMiddleware::class . ':pageNotFound');
+SimpleRouter::setErrorFallback(HttpMiddleware::class . ':fatalError');
 
 $dependencies = new PimpleContainer();
 $dependencies['settings'] = $settings;

@@ -12,14 +12,12 @@
     "minimum-stability": "stable",
     "require": {
         "intec/simple-router": "dev-master",
-        "pimple/pimple": "3.2.3"
+        "pimple/pimple": "3.2.3",
+        "firebase/php-jwt": "5.0.0"
     },
     "autoload": {
         "psr-4": {
             "IntecPhp\\": "app/src"
         }
-    },
-    "scripts": {
-        "dbpatch-sync": "dbpatch.php --config=app/config/dbpatch.php sync"
     }
 }

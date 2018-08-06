@@ -1,4 +1,4 @@
-<section>
+<section class="mt-5">
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -9,7 +9,7 @@
                     <small>
                         <?php
                             if ($displayErrors) {
-                                echo sprintf('%s em %s, linha %s, código: %s',$e->getMessage(),$e->getFile(),$e->getLine(),$e->getCode());
+                                echo sprintf('%s em %s, linha %s, código: %s', $e->getMessage(), $e->getFile(), $e->getLine(), $e->getCode());
                             }
                         ?>
                     </small>

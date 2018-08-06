@@ -5,22 +5,42 @@ namespace IntecPhp;
 return [
     [
         'pattern' => '/',
-        'callback' => function() {
+        'callback' => function () {
             $layout = new View\Layout();
             $layout
-                ->addStylesheet('/css/home.min.css')
-                ->addScript('/js/home.min.js')
+                ->addStylesheet('/css/home')
+                ->addScript('/js/home')
                 ->render('home/index');
         }
     ],
+    // ##################### EXEMPLOS DE ROTAS ####################################
     [
         'pattern' => '/exemplo',
-        'callback' => function() {
+        'callback' => function () {
             $layout = new View\Layout();
             $layout
-                ->addStylesheet('/css/exemplo.min.css')
-                ->addScript('/js/exemplo.min.js')
+                ->addStylesheet('/css/exemplo')
+                ->addScript('/js/exemplo')
                 ->render('exemplo/index');
+        }
+    ],
+    [
+        'pattern' => '/pagina-restrita',
+        'middlewares' => [
+            Middleware\AuthenticationMiddleware::class . ':isAuthenticated'
+        ],
+        'callback' => function () {
+            $layout = new View\Layout();
+            $layout
+                ->addStylesheet('/css/exemplo')
+                ->addScript('/js/exemplo')
+                ->render('exemplo/index');
+        }
+    ],
+    [
+        'pattern' => '/pagina-com-erro',
+        'callback' => function () {
+            throw new \Error('Simulação de um erro', 1);
         }
     ],
 ];
