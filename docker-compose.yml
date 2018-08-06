@@ -1,0 +1,47 @@
+version: '3.1'
+services:
+    composer:
+        image: composer:1.6.5
+        container_name: phpstart-composer
+        volumes:
+            - .:/srv/vhosts/phpApp
+        working_dir: /srv/vhosts/phpApp
+        command: install --ignore-platform-reqs
+
+    node:
+        image: node:10.6.0-alpine
+        container_name: phpstart-node
+        environment:
+            - SERVERNAME=webserver
+        volumes:
+            - .:/srv/vhosts/phpApp
+        working_dir: /srv/vhosts/phpApp
+        command: /bin/sh -c "npm install grunt-cli && npm install && npm run dev"
+        ports:
+            - 3000:3000
+            - 3001:3001
+        depends_on:
+            - composer
+            - webserver
+
+    php-fpm:
+        image: marciodojr/phpstart:2.0.0
+        container_name: phpstart
+        environment:
+            - APP_COOKIE_NAME=auth_token
+        working_dir: /srv/vhosts/phpApp
+        volumes:
+            - .:/srv/vhosts/phpApp
+            - ./.docker/php-fpm/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+
+    webserver:
+        image: nginx:1.14.0-alpine
+        container_name: phpstart-webserver
+        working_dir: /srv/vhosts/phpApp
+        volumes:
+            - .:/srv/vhosts/phpApp
+            - ./.docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+        ports:
+            - 2999:80
+        depends_on:
+            - php-fpm

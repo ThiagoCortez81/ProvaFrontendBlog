@@ -1,0 +1,25 @@
+{
+    "name": "intec/php-start",
+    "description": "Repositório padrão para criação de novos projetos",
+    "type": "project",
+    "license": "Private",
+    "authors": [
+        {
+            "name": "Márcio Dias",
+            "email": "marciojr91@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "intec/simple-router": "dev-master",
+        "pimple/pimple": "3.2.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "IntecPhp\\": "app/src"
+        }
+    },
+    "scripts": {
+        "dbpatch-sync": "dbpatch.php --config=app/config/dbpatch.php sync"
+    }
+}
