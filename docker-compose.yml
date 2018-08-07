@@ -24,7 +24,7 @@ services:
         working_dir: /srv/vhosts/phpApp
         volumes:
             - .:/srv/vhosts/phpApp
-            - ./.docker/php/php-ini-overrides.ini:/etc/php/7.2/fpm/conf.d/99-overrides.ini
+            - ./.docker/php/php-ini-overrides.ini:/usr/local/etc/php/conf.d/99-overrides.ini
         command: /bin/sh -c "composer install && php-fpm"
 
     webserver:
