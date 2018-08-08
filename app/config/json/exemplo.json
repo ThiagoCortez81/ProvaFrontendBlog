@@ -2,7 +2,35 @@
     "code": "200",
     "message": "success",
     "data": {
-        "title": "Exemplo",
-        "description": "Lorem Ipsun"
+        "posts": [
+            {
+                "id": 1,
+                "tag": "#Financiamentos",
+                "title": "Vantagens de solicitar um Financiamento",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ullamcorper, neque at tristique.",
+                "img": "https://picsum.photos/380/185"
+            },
+            {
+                "id": 2,
+                "tag": "#Financiamentos",
+                "title": "Vantagens de solicitar um Financiamento",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ullamcorper, neque at tristique.",
+                "img": "https://picsum.photos/380/185"
+            },
+            {
+                "id": 3,
+                "tag": "#Financiamentos",
+                "title": "Vantagens de solicitar um Financiamento",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ullamcorper, neque at tristique.",
+                "img": "https://picsum.photos/380/185"
+            },
+            {
+                "id": 4,
+                "tag": "#Financiamentos",
+                "title": "Vantagens de solicitar um Financiamento",
+                "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ullamcorper, neque at tristique.",
+                "img": "https://picsum.photos/380/185"
+            }
+        ]
     }
 }
