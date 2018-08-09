@@ -1,36 +1,15 @@
-Vue.component('blog-post', {
-    props: ['post'],
-    template: `
-        <div class="blog-post">
-            <img class="blog-post-img" v-bind:src="post.img" v-bind:alt="post.title">
-            <div class="blog-post-body">
-                <p><small class="blog-post-tag">{{post.tag}}</small></p>
-                <h5 class="blog-post-title">{{post.title}}</h5>
-                <p class="blog-post-text">{{post.text}}</p>
-                <a href="#" class="btn btn-primary">LER MAIS</a>
-            </div>
-        </div>
-    `
-  })
+// Importar os componentes usados na página
+import { BlogPostComponent } from './lib/BlogPostComponent';
+ExtractTableComponent = require('./lib/ExtractTableComponent');
 
+// Criar o Vue App da página
 var vueExampleApp = new Vue({
     el: "#exampleApp",
     data: {
         posts: []
     },
-    methods: {
-        removeTrip: function (tripId) {
-            if (confirm('Tem certeza que deseja remover a viagem ' + tripId)) {
-                var index = this.trips.findIndex(t => t.id == tripId);
-
-                if (index > -1) {
-                    this.trips.splice(index, 1);
-                }
-            }
-        }
-    },
     created() { // vue lifecycle hook
-        API.get('/exemplo').done((res, res2, res3, res4) => {
+        API.get('/exemplo1').done((res, res2, res3, res4) => {
             switch(res.code) {
                 case 200:
                     this.posts = res.data.posts;
@@ -39,5 +18,17 @@ var vueExampleApp = new Vue({
                     throw 'Codigo não esperado! ' + res.code
             }
         });
+    }
+});
+
+// Criar o componente extract-table, buscar o json e preenchê-lo
+ExtractTableComponent.init("#extractTable");
+API.get('/exemplo2').done((res, res2, res3, res4) => {
+    switch(res.code) {
+        case 200:
+            ExtractTableComponent.fillTable(res.data);
+            break;
+        default:
+            throw 'Codigo não esperado! ' + res.code
     }
 });
