@@ -21,11 +21,11 @@ export {
 - execute o comando: `docker-compose up` na **raiz do projeto**
 
 Observações:
-- Quando o **docker-composer** terminar de inicializar os containers, a aplicação estará disponível em: http://localhost:3000.
+- Quando o **docker-compose** terminar de inicializar os containers, a aplicação estará disponível em: http://localhost:3000.
 - Utilizamos o grunt para auxiliar nas *tasks* de desenvolvimento. As tasks existentes são:
     - Browserify:
     - Uglify:
-    - Sass -> Css:
+    - Sass transform, minification:
     - Copy:
     - Watch:
     - BrowserSync:
