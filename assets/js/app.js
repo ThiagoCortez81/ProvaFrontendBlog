@@ -12,6 +12,9 @@ VueTheMask = require('vue-the-mask');
 Vue.use(VueTheMask);
 require('./lib/VueFilters');
 
+import { ApiService } from './lib/ApiService';
+global.API = new ApiService();
+
 (function($){
 
     PrettyAlerts.init();

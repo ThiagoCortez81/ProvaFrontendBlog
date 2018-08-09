@@ -7,9 +7,18 @@
 - Docker Compose: https://docs.docker.com/compose/install/
 - git
 - Um bom editor de código
+- Criar o arquivo `environment.js` na **raiz do projeto**
 
+```js
+const environment = {
+    apiUrl: ''
+};
 
-Após clonar o repositório, execute o comando: `docker-compose up`
+export {
+    environment
+};
+```
+- execute o comando: `docker-compose up` na **raiz do projeto**
 
 Observações:
 - Quando o **docker-composer** terminar de inicializar os containers, a aplicação estará disponível em: http://localhost:3000.

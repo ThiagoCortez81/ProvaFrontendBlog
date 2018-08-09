@@ -30,8 +30,14 @@ var vueExampleApp = new Vue({
         }
     },
     created() { // vue lifecycle hook
-        $.get('/exemplo', null, null, 'json').then(response => {
-            this.posts = response.data.posts;
+        API.get('/exemplo').done((res, res2, res3, res4) => {
+            switch(res.code) {
+                case 200:
+                    this.posts = res.data.posts;
+                    break;
+                default:
+                    throw 'Codigo não esperado! ' + res.code
+            }
         });
     }
 });
