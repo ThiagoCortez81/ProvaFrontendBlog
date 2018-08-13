@@ -151,7 +151,8 @@ A idéia da prova é implementar o layout proposto no arquivo **prova-front.psd*
 4. Se esforce para criar componentes que podem ser reutilizados em outras páginas. Use os exemplos contidos no projeto para se inspirar;
 
 ### Regras
-- Nosso projeto utiliza Bootstrap, Sass, JQuery e Vue. Fique a vontade para utilizar esses recursos. Bootstrap e Sass são obrigatórios;
+- Nosso projeto utiliza Bootstrap 4, Sass, JQuery e Vue. Fique a vontade para utilizar esses recursos. Bootstrap e Sass são obrigatórios;
+- Evite reinventar a roda: quando possível utilize componentes disponíveis no Bootstrap ao invés de criar um do zero;
 - Não se preocupe com a pasta `public`. Caso necessário, adicione arquivos à pasta `assets` que o projeto automaticamente criará uma cópia na pasta `public`.
 - Não editar o arquivo **prova.json**, a não ser que tenha uma boa justificativa. Nesse caso, informe-a em um comentário no código.
 
