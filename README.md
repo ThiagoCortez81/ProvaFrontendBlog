@@ -55,8 +55,56 @@ docker exec -it phpstart sh
 
 # Informações sobre o desenvolvimento
 
-## Rotas
+## Estrutura
+O repositório possui a estrutura abaixo. Algumas pastas e arquivos que não são importantes para esse texto foram omitidos ppor clareza
 
+```md
+├── app/
+│   ├── config/
+│   │   ├── json/ : Arquivos json utilizados localmente no desenvolvimento
+│   │   ├── json-mapper.php : Associa arquivos json às respectivas chamadas de API
+│   │   └── template-routes.php : Configuração das rotas
+│   ├── src/
+│   └── views/ : Contém os layouts, templates e partials
+├── assets/ : Arquivos que serão processadose copiados para a pasta public automaticamente pelo sistema
+│   ├── fonts/
+│   ├── img/
+│   ├── js/
+│   └── sass/
+├── public/ : Arquivos acessíveis pela aplicação.
+├── .babelrc
+├── .dockerignore
+├── .editorconfig
+├── .gitignore
+├── composer.json
+├── composer.lock
+├── docker-compose.yml
+├── environment.js
+├── gruntfile.js
+├── package-lock.json
+├── package.json
+└── README.md
+```
+
+## Rotas
+Para criar uma nova rota:
+1. Criar o template na pasta `app/views/template`.
+2. Se necessário, criar o javascript na pasta `assets/js`.
+3. Se necessário, criar a folha de estilo na pasta `assets/sass`.
+4. Adicionar uma nova entrada no arquivo `app\config\template-routes.php` conforme o exemplo:
+
+```
+    [
+        'pattern' => '/exemplo',
+        'callback' => function () {
+            $layout = new View\Layout();
+            $layout
+                ->addStylesheet('/css/exemplo')
+                ->addScript('/js/exemplo')
+                ->render('exemplo/index');
+        }
+    ],
+```
 
 ## Html
 Cada vez que um usuário acessa uma rota, o sistema utiliza diversos arquivos para montar a estrutura da página. Esses arquivos encontram-se organizados em pastas específicas conforme sua função na estrutura da página.
@@ -79,7 +127,40 @@ Os arquivos de partials encontram-se na pasta `app/views/partial`.
 A função dos partials é definir **trechos pequenos de código html reutilizável**. Por exemplo, um breadcrumb é um elemento que provavelmente aparecerá em diversas páginas. O html do breadcrumb pode ser colocado em um partial e, quando quisermos inserir um breadcrumb, ao invés de copiar e colar o código, podemos usar o comando php `require` para inserir o conteúdo do arquivo naquele local.
 
 ## CSS
-O sistema utiliza o sass para gerar as folhas de estilo. Os arquivos podem ser encontrados na pasta `assets/sass`. Dentro dessa pasta, a pasta `theme` contém os arquivos que compõe o tema global do sistema. 
+O projeto utiliza o preprocessador sass para gerar as folhas de estilo. Os arquivos podem ser encontrados na pasta `assets/sass`. Folhas de estilo de páginas específicas devem ser criados diretamente dentro desta pasta. Já a pasta `theme` contém as folhas de estilo que compõe o tema da aplicação, disponível para todas as páginas. A estrutura é a seguinte:
+
+- `_type.scss`: Classes relacionadas a fontes e tipografia;
+- `_variables.scss`: Definição das variáveis do Bootstrap e também dos componentes da aplicação;
+- `main.scss`: Aquivo principal que inclui as fontes, os arquivos do Bootstrap e também nossos componentes customizados. Esse arquivo é incluído no layout, fazendo com que o Bootstrap e o tema estejam disponíveis em todas as páginas;
+- `partials/`: Aqui devem ser criados os arquivos scss referentes aos componentes da aplicação. Esses arquivos devem ser adicionados no `main.scss` para serem incluídos no projeto.
 
 ## JS
-Na pasta `assets/js` encontram-se os arquivos javascript utilizados no sistema. A pasta `lib` contém bibliotecas reutilizáveis que devem ser incluídas nos locais onde forem necessárias.
+Na pasta `assets/js` encontram-se os arquivos javascript utilizados no sistema. Arquivos de páginas específicas são colocados na raiz da pasta. Caso um código deva ser reutilizado na aplicação toda (como o código de um componente, por exemplo), colocá-lo na pasta `lib` e incluí-lo no arquivo `app.js`.
+
+
+# Prova de Front-end
+
+Faça um fork e clone clone esse projeto, crie um branch (pode ser com o seu nome). Siga as instruções disponíveis no [README](https://github.com/incluirtecnologia/PhpStartWebApp/blob/master/README.md) para instalar as dependências e executar a aplicação.
+
+## A Prova!
+A idéia da prova é implementar o layout proposto no arquivo **prova-front.psd**.
+
+1. Leia as informações disponíveis no README para aprender como trabalhar com o projeto;
+2. Crie uma nova rota para o seu layout;
+3. Os dados devem ser carregados a partir do arquivo **prova.json**, utilizando a API que disponibilizamos;
+4. Se esforce para criar componentes que podem ser reutilizados em outras páginas. Use os exemplos contidos no projeto para se inspirar;
+
+### Regras
+- Nosso projeto utiliza Bootstrap, Sass, JQuery e Vue. Fique a vontade para utilizar esses recursos. Bootstrap e Sass são obrigatórios;
+- Não se preocupe com a pasta `public`. Caso necessário, adicione arquivos à pasta `assets` que o projeto automaticamente criará uma cópia na pasta `public`.
+- Não editar o arquivo **prova.json**, a não ser que tenha uma boa justificativa. Nesse caso, informe-a em um comentário no código.
+
+### Avaliação
+Avaliaremos os seguintes pontos no seu trabalho:
+
+- Resultado funcional
+- Resultado visual
+- Manutenabilidade do código
+- Clareza e limpeza do código
+- Semântica HTML
+- Lógica de programação
