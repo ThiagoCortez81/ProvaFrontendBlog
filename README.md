@@ -56,7 +56,7 @@ docker exec -it phpstart sh
 # Informações sobre o desenvolvimento
 
 ## Estrutura
-O repositório possui a estrutura abaixo. Algumas pastas e arquivos que não são importantes para esse texto foram omitidos ppor clareza
+O repositório possui a estrutura abaixo. Algumas pastas e arquivos que não são importantes para esse texto foram omitidos por clareza
 
 ```md
 ├── app/
