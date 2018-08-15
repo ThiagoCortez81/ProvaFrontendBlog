@@ -15,21 +15,15 @@
     <body>
         <header>
             <nav class="navbar navbar-expand-sm navbar navbar-dark bg-dark position-fixed fixed-top">
-                <a class="navbar-brand" href="#">PhpStart</a>
+                <a class="navbar-brand" href="/">PhpStart</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav">
-                        <li class="nav-item active">
+                        <!-- <li class="nav-item active">
                             <a class="nav-link" href="#">Início</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Features</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Pricing</a>
-                        </li>
+                        </li> -->
                     </ul>
                 </div>
             </nav>
@@ -40,6 +34,7 @@
 
         <footer class="bg-dark border-top border-white pt-3 pb-5">
             <div class="container">
+                <p class="float-right"><a href="#" class="text-white small">Voltar ao início</a></p>
                 <p class="text-white small">© 2018 - Incluir Tecnologia LTDA ME.</p>
             </div>
         </footer>

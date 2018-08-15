@@ -1,14 +1,14 @@
 <div class="container">
 
-    <h1>Exemplo de componente criado com Vue:</h1>
+    <h2 class="py-3 wb-3">Componente criado com Vue:</h2>
 
-    <div id="exampleApp" class="posts-gallery">
+    <div id="exampleApp" class="posts-gallery wb-5">
         <blog-post v-for="post in posts" v-bind:post="post" v-bind:key="post.id"></blog-post>
     </div>
 
-    <h1>Exemplo de componente criado com JQuery e module.exports:</h1>
+    <h2 class="py-3 wb-3">Componente criado com JQuery e module.exports:</h2>
 
-    <div id="extractTable"></div>
+    <div id="extractTable" class="wb-5"></div>
 
 </div>
 

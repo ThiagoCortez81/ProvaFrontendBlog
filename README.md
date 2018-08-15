@@ -91,7 +91,7 @@ Para criar uma nova rota:
 1. Criar o template na pasta `app/views/template`.
 2. Se necessário, criar o javascript na pasta `assets/js`.
 3. Se necessário, criar a folha de estilo na pasta `assets/sass`.
-4. Adicionar uma nova entrada no arquivo `app\config\template-routes.php` conforme o exemplo:
+4. Adicionar uma nova entrada no arquivo `app/config/template-routes.php` conforme o exemplo:
 
 ```
     [
