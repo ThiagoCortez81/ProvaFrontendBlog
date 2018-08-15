@@ -1,55 +1,17 @@
 .blog-post {
     margin-bottom: $spacer;
-    min-width: 0;
-    word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
     box-shadow: 1px 2px 4px rgba(168, 168, 168, 0.25);
     border-radius: $blog-post-border-radius;
 
     .blog-post-img {
-        width: 100%;
         border-top-left-radius: calc(#{$card-border-radius} - 1px);
-        border-top-right-radius: calc(#{$card-border-radius} - 1px);
+        border-bottom-left-radius: calc(#{$card-border-radius} - 1px);
     }
 
-    .blog-post-body {
-        padding: $blog-post-padding;
-
-        .blog-post-tag {
-            font-size: 14px;
-            line-height: 17px;
-            font-weight: bold;
-            color: $blog-post-color4;
-        }
-
-        .blog-post-title {
-            margin-top: 12px;
-            margin-bottom: 30px;
-            font-size: 36px;
-            line-height: 44px;
-            font-weight: bold;
-            color: $blog-post-color1;
-        }
-    
-        .blog-post-text {
-            margin-bottom: 30px;
-            font-size: 16px;
-            line-height: 20px;
-            color: $blog-post-color2;
-        }
-
-        .btn {
-            padding: 6px auto;
-            width: 170px;
-            height: 30px;
-            border-radius: 6px;
-            font-size: 14px;
-            line-height: 17px;
-            font-weight: bold;            
-            color: $blog-post-color1;
-            background-color: $blog-post-color3;
-            border-color: $blog-post-color3;
-        }
+    .blog-post-title {
+        font-weight: bold;
+        color: $blog-post-color1;
     }
 }

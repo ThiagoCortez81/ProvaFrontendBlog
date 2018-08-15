@@ -137,24 +137,42 @@ O projeto utiliza o preprocessador sass para gerar as folhas de estilo. Os arqui
 ## JS
 Na pasta `assets/js` encontram-se os arquivos javascript utilizados no sistema. Arquivos de páginas específicas são colocados na raiz da pasta. Caso um código deva ser reutilizado na aplicação toda (como o código de um componente, por exemplo), colocá-lo na pasta `lib` e incluí-lo no arquivo `app.js`.
 
+### API Service
+O projeto disponibiliza um serviço para fazer chamadas de API que retornam dados no formato JSON. Para acessá-lo, utilize o objeto API e chame um de seus métodos: `get()`, `post()`, `put()` e `delete()` que fazem, cada um, a respectiva requisição, e `request()`, que aceita um parâmetro method indicando o tipo de requisição. Esse serviço foi implementado de forma a chamar a API real caso a aplicação esteja rodando em produção, ou retornar um arquivo json de teste caso a aplicação esteja rodando localmente.
+
+**Exemplo:** O código abaixo faz uma requisição GET para a rota `/teste`. Ao completar a requisição é recebido um json. Primeiro testamos o código de retorno para determinar se a requisição obteve sucesso e então preenchemos um objeto com os dados recebidos. Caso o código não seja de sucesso, lançamos um erro.
+
+```
+API.get('/teste').done((res, res2, res3, res4) => {
+    switch(res.code) {
+        case 200:
+            this.posts = res.data.posts;
+            break;
+        default:
+            throw 'Codigo não esperado! ' + res.code
+    }
+});
+```
 
 # Prova de Front-end
 
 Faça um fork e clone clone esse projeto, crie um branch (pode ser com o seu nome). Siga as instruções disponíveis no [README](https://github.com/incluirtecnologia/PhpStartWebApp/blob/master/README.md) para instalar as dependências e executar a aplicação.
 
 ## A Prova!
-A idéia da prova é implementar o layout proposto no arquivo **prova-front.psd**.
+A idéia da prova é implementar o layout proposto nos arquivos **prova.png**, **prova_320.png** e **prova_320_menu.png**.
 
-1. Leia as informações disponíveis no README para aprender como trabalhar com o projeto;
+1. Leia as informações disponíveis na wiki para aprender como trabalhar com o projeto;
 2. Crie uma nova rota para o seu layout;
-3. Os dados devem ser carregados a partir do arquivo **prova.json**, utilizando a API que disponibilizamos;
-4. Se esforce para criar componentes que podem ser reutilizados em outras páginas. Use os exemplos contidos no projeto para se inspirar;
+3. Os dados devem ser carregados a partir do arquivo **prova.json**, utilizando o serviço de API que disponibilizamos. Para isso, fazer uma requisição `get()` para o endereço `/prova`;
+4. Se esforce para criar componentes que podem ser reutilizados em outras páginas. Use os exemplos contidos no projeto para se inspirar. Eles podem ser visualizados na rota `/exemplo`;
+5. Não se esqueça de implementar a versão mobile.
 
 ### Regras
-- Nosso projeto utiliza Bootstrap 4, Sass, JQuery e Vue. Fique a vontade para utilizar esses recursos. Bootstrap e Sass são obrigatórios;
+- Nosso projeto utiliza Bootstrap 4, Sass, JQuery e Vue. Fique a vontade para utilizar esses recursos. Bootstrap e Sass são obrigatórios. Usar o Vue é desejável, mas não obrigatório;
 - Evite reinventar a roda: quando possível utilize componentes disponíveis no Bootstrap ao invés de criar um do zero;
-- Não se preocupe com a pasta `public`. Caso necessário, adicione arquivos à pasta `assets` que o projeto automaticamente criará uma cópia na pasta `public`.
-- Não editar o arquivo **prova.json**, a não ser que tenha uma boa justificativa. Nesse caso, informe-a em um comentário no código.
+- Não editar o arquivo **prova.json**, a não ser que tenha uma boa justificativa. Nesse caso, informe-a em um comentário no código;
+- Para as imagens, pode adicionar algumas imagens fake ao projeto ou usar um [lorem picsum](https://picsum.photos/) da vida;
+- Lembre-se: a sua implementação não precisa ser perfeita. Dê o seu melhor e crie o layout da melhor forma que conseguir, mesmo que alguns elementos fiquem faltando. Nós vamos avaliar como você trabalhou.
 
 ### Avaliação
 Avaliaremos os seguintes pontos no seu trabalho:
