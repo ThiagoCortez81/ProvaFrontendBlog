@@ -142,8 +142,8 @@ O projeto disponibiliza um serviço para fazer chamadas de API que retornam dado
 
 **Exemplo:** O código abaixo faz uma requisição GET para a rota `/teste`. Ao completar a requisição é recebido um json. Primeiro testamos o código de retorno para determinar se a requisição obteve sucesso e então preenchemos um objeto com os dados recebidos. Caso o código não seja de sucesso, lançamos um erro.
 
-```
-API.get('/teste').done((res, res2, res3, res4) => {
+```js
+API.get('/teste').done(res => {
     switch(res.code) {
         case 200:
             this.posts = res.data.posts;
