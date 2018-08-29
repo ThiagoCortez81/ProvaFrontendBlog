@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Blog MOVA</title>
     <?php require_once 'app/views/partial/layout-header-config.php'; ?>
     <link type="text/css" rel="stylesheet" href="/css/app.min.css"/>
 
     <?php foreach ($this->stylesheets as $href): ?>
         <link href="<?php echo $href; ?>" rel="stylesheet" type="text/css">
     <?php endforeach; ?>
-
     <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono|Raleway:500" rel="stylesheet">
 </head>
 <body>
