@@ -6,22 +6,7 @@ return [
     [
         'pattern' => '/',
         'callback' => function () {
-            $layout = new View\Layout();
-            $layout
-                ->addStylesheet('/css/home')
-                ->addScript('/js/home')
-                ->render('home/index');
-        }
-    ],
-    // ##################### EXEMPLOS DE ROTAS ####################################
-    [
-        'pattern' => '/exemplo',
-        'callback' => function () {
-            $layout = new View\Layout();
-            $layout
-                ->addStylesheet('/css/exemplo')
-                ->addScript('/js/exemplo')
-                ->render('exemplo/index');
+            header("Location: /home");
         }
     ],
     [
