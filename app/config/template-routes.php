@@ -54,4 +54,10 @@ return [
                 ->render('home/index');
         }
     ],
+    [
+        'pattern' => '/prova',
+        'callback' => function () {
+            echo file_get_contents('app/config/json/prova.json');
+        }
+    ],
 ];

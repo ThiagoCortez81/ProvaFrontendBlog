@@ -1,5 +1,18 @@
 @import 'theme/main.scss';
 
+@font-face {
+  font-family: 'StemBold';
+  src: url('/fonts/stem.ttf') format('truetype');
+}
+
+* {
+  font-family: StemBold, Serif;
+}
+
+.fontStem {
+  font-family: StemBold, serif;
+}
+
 head {
   height: 56px;
 }
@@ -13,7 +26,6 @@ main {
   height: 24px;
   padding: 10px 30px 7px;
   border-radius: 5px;
-  background-image: url("/img/search-icon.svg");
   background-repeat: no-repeat;
   background-size: 10%;
 
@@ -39,7 +51,7 @@ main {
   font-size: 14px;
   margin-top: 7px;
   margin-left: 7px;
-  padding: 3px 10px 0 10px;
+  padding: 3px 13px 0 13px;
 }
 
 .padding-0 {
@@ -55,11 +67,19 @@ main {
 }
 
 .margin-bottom-10 {
+  margin-bottom: 10px;
+}
+
+.margin-bottom-20 {
   margin-bottom: 20px;
 }
 
 .margin-left-0 {
   margin-left: 0;
+}
+
+.pl-15 {
+  padding-left: 15px;
 }
 
 .social-icons {
@@ -114,6 +134,49 @@ main {
   background-color: #FFF;
 }
 
+.btn-outline-purple {
+  background-color: #FFF;
+  border: 3px solid #76007f;
+  color: #76007f;
+  padding: 5px 30px 2px;
+  margin: 0 15px;
+  font-weight: 900;
+}
+
+.btn-outline-purple:hover {
+  background-color: #76007f;
+  color: #FFF;
+}
+
+.botao-0 {
+  background-color: #d7f37c;
+}
+
+.botao-1 {
+  background-color: #fbc600;
+}
+
+.botao-2 {
+  background-color: #767dff;
+}
+
+.botao-3 {
+  background-color: #49b6d1;
+}
+
+.botao-4 {
+  background-color: #ff774f;
+}
+
+.botao-5 {
+  background-color: #00b79c;
+}
+
+.icon-menu {
+  width: 40px;
+  display: none;
+}
+
 /* SOBRESCREVENDO CLASSES DO BOOTSTRAP */
 .jumbotron {
   border-radius: 0;
@@ -128,4 +191,47 @@ main {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#6f0080', endColorstr='#493688', GradientType=1);
 
   padding-top: 1rem;
+}
+
+/** RESPONSIVE **/
+
+@media screen and (max-width: 320px) {
+  .top-search-input {
+    max-width: 100%;
+  }
+  .social-icons {
+    display: none;
+  }
+  .badge {
+    display: none;
+  }
+  .main-jumbotron-content {
+    padding: 1rem 0 6rem 0;
+  }
+  .btn-outline-purple {
+    width: 250px;
+    margin-bottom: 10px;
+  }
+  .icon-menu {
+    display: block;
+    margin: auto;
+    margin-top: 20px;
+  }
+  .mobile_badge {
+    display: inline;
+  }
+}
+
+/** MENU MOBILE **/
+#menu_mob {
+  color: #FFF;
+  display: none;
+  background-color: rgba(118, 0, 127, 0.8);
+  width: 100%;
+  height: 100%;
+  z-index: 99999999999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  text-align: center;
 }
