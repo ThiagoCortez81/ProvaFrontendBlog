@@ -18,18 +18,9 @@
         <full-head :tags="tags" :colors="colors"></full-head>
     </header>
     <main>
-        <blog-post-big :posts="posts"></blog-post-big>
-        <br>
-        <blog-post :posts="posts_middle"></blog-post>
-        <br>
-        <blog-post-end :posts="posts_end"></blog-post-end>
-        <br>
-        <br>
-        <br>
-        <conheca></conheca>
-        <!--    --><?php //require_once 'app/views/template/' . $page . '.php'; ?>
+        <?php require_once 'app/views/template/' . $page . '.php'; ?>
+    </main>
 </section>
-</main>
 <br><br><br><br>
 <script type='text/javascript' src="/js/app.min.js"></script>
 <?php foreach ($this->scripts as $path): ?>

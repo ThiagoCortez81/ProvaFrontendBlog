@@ -25,14 +25,27 @@ Vue.component('full-head', {
         '        </div>' +
         '        <div id="menu_mob">' +
         '           <!-- menu -->' +
-        '           <button :class="\'btn >mobile_badge badge text-white badge-size botao-\'+index" v-for="(tag, index) in tags">#{{ tag }}</button>' +
+        '           <div class="col-md-12 margin-top-20">' +
+        '               <h1 class="text-center"><b>Categorias</b></h1>' +
+        '           </div>' +
+        '           <div class="col-md-12" v-for="(tag, index) in tags">' +
+        '               <button :class="\'btn mobile_badge badge text-white badge-size botao-\'+index"><b>#{{ tag }}</b></button>' +
+        '           </div>' +
+        '           <div class="col-md-12 margin-top-20">' +
+        '               <span class="text-white">Ir para <b><a href="#" class="link-mova">Mova</a></b></span>' +
+        '           </div>' +
+        '           <div class="col-md-12 margin-top-20">' +
+        '               <a href="#" data-element="#menu_mob" id="voltar_menu_mob_hack">' +
+        '                   <object class="icon-menu" data="/img/circle.svg" type="image/svg+xml"></object>' +
+        '               </a>' +
+        '           </div>' +
         '           <!-- fim -->' +
         '        </div>\n' +
         '    </div>'
 });
 Vue.component('blog-post-big', {
     props: ['posts'],
-    template: '<div class="container sombra-esquerda recuo-post-destaque background-white">\n' +
+    template: '<div class="container sombra-esquerda recuo-post-destaque background-white post-destaque">\n' +
         '        <section class="row margin-left-0">\n' +
         '            <div class="col-md-4 padding-0 margin-bottom-10">\n' +
         '                <h5 class="margin-top-10">\n' +
@@ -52,7 +65,7 @@ Vue.component('blog-post-big', {
 });
 Vue.component('blog-post', {
     props: ['posts'],
-    template: '<div class="container background-white padding-left-0">\n' +
+    template: '<div class="container background-white padding-left-0 blog-posts">\n' +
         '            <section class="row margin-left-0">\n' +
         '                <div class="col-md-4 padding-0 sombra-esquerda" v-for="(value, index) in posts">\n' +
         '                    <img src="https://picsum.photos/380/150/?random" class="w-100" alt="">\n' +
@@ -133,8 +146,20 @@ new Vue({
 });
 
 $(function () {
+    var html = $('html');
+
     $("#menu_mob_hack").click(function (e) {
         e.preventDefault();
+        window.scrollTo(0, 0);
+        html.css('overflow', 'hidden');
+        el = $(this).data('element');
+        $(el).toggle();
+    });
+    $("#voltar_menu_mob_hack").click(function (e) {
+        e.preventDefault();
+        window.scrollTo(0, 0);
+        html.css('overflow', 'auto');
+        $('body').on('scroll mousewheel touchmove');
         el = $(this).data('element');
         $(el).toggle();
     });
